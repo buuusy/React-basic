@@ -15,7 +15,7 @@ class Counter extends Component {
         <button
           onClick={() => {
             this.setState(
-              (prevState, p) => {
+              (prevState, props) => {
                 return { number: prevState.number + 1 };
               },
               () => {
