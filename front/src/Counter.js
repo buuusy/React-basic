@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 
 class Counter extends Component {
   constructor(props) {
-    //state 사용하기 위해서는 사용해야함
-
     super(props); // 부모 생성자 함수 호출
 
     // state 초기화
