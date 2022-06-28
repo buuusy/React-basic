@@ -1,21 +1,10 @@
 import React, { Component } from 'react';
 
 class EventPractice extends Component {
-  state = { message: '' };
-
-  constructor(props) {
-    super(props); // 수퍼클래스의 생성자를 불러와서 props를 넣어줍니다
-    this.handleChange = this.handleChange.bind(this);
-    this.handleClick = this.handleClick.bind(this);
-  }
-
-  handleChange = (e) => {
-    this.setState({ message: e.target.value });
+  state = {
+    username: '',
+    message: '',
   };
-
-  handleClick(e) {
-    this.setState({ message: '' });
-  }
 
   render() {
     return (
@@ -23,15 +12,41 @@ class EventPractice extends Component {
         <h1>이벤트 연습</h1>
         <input
           type="text"
-          name="massage"
-          placeholder="아무거나 입력해"
-          value={this.state.massage}
+          name="username"
+          placeholder="사용자명"
+          value={this.state.username}
           onChange={this.handleChange}
+        />
+        <input
+          type="text"
+          name="message"
+          placeholder="아무거나"
+          value={this.state.message}
+          onChange={this.handleChange}
+          onKeyPress={this.handlekeyPress}
         />
         <button onClick={this.handleClick}>확인</button>
       </div>
     );
   }
+
+  handleChange = (e) => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
+
+  handleClick = (e) => {
+    alert(this.state.username + ':' + this.state.message);
+    this.setState({
+      username: '',
+      message: '',
+    });
+  };
+
+  handlekeyPress = (e) => {
+    if (e.key === 'Enter') {
+      this.handleClick();
+    }
+  };
 }
 
 export default EventPractice;
